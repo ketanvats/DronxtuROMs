@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dronxtu's ROM Portfolio - MT6833</title>
     <meta name="description" content="Discover the ultimate custom ROMs for POCO M4 Pro 5G and Redmi Note 11 Series. Crafted by Ketan | Dronxtu.">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -60,8 +63,12 @@
             <p>A glimpse into the UI.</p>
         </div>
 
-        <div class="gallery-slider js-gallery" id="gallery-container">
-            <!-- Images will be injected here -->
+        <div class="swiper gallery-slider" id="gallery-swiper">
+            <div class="swiper-wrapper" id="gallery-container">
+                <!-- Images will be injected here -->
+            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -87,6 +94,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

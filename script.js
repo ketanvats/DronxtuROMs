@@ -167,11 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 rom.images.forEach((imgSrc, i) => {
                     const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.setAttribute('data-aos', 'fade-up');
-                    item.setAttribute('data-aos-duration', '1200');
-                    item.setAttribute('data-aos-easing', 'ease-out-cubic');
-                    item.setAttribute('data-aos-delay', ((i % 3) * 150).toString());
+                    item.className = 'swiper-slide';
                     const wrapper = document.createElement('div');
                     wrapper.className = 'img-float-wrapper';
                     const img = document.createElement('img');
@@ -186,10 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Show Gallery Section
                 gallerySection.style.display = 'block';
                 
-                // Refresh AOS to register new elements
-                setTimeout(() => {
-                    AOS.refresh();
-                }, 100);
+                // Initialize Swiper Coverflow
+                if (window.mySwiper) {
+                    window.mySwiper.destroy(true, true);
+                }
+                
+                window.mySwiper = new Swiper('#gallery-swiper', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    initialSlide: 1,
+                    coverflowEffect: {
+                        rotate: 30,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 1,
+                        slideShadows: true,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true
+                    },
+                    keyboard: {
+                        enabled: true
+                    }
+                });
                 
                 // Trigger a reflow to restart animation on the gallery
                 gallerySection.style.animation = 'none';
