@@ -241,72 +241,105 @@ nav {
     100% { transform: translateY(0px); }
 }
 
-/* Features Section */
-.features-section {
+/* Portfolio Section */
+.portfolio-section {
     padding: 6rem 5%;
     position: relative;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-title h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-}
-
-.section-title p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.features-grid {
+.portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
-.feature-card {
+.rom-card {
     background: var(--surface-color);
     border: 1px solid var(--surface-border);
     border-radius: 24px;
-    padding: 2.5rem;
+    padding: 2rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.feature-card:hover {
+.rom-card:hover {
     transform: translateY(-10px);
     border-color: rgba(139, 92, 246, 0.5);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.feature-icon {
-    font-size: 2.5rem;
+.rom-header {
     margin-bottom: 1.5rem;
-    display: inline-block;
-    padding: 1rem;
-    background: rgba(139, 92, 246, 0.1);
-    border-radius: 20px;
+}
+
+.rom-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     color: var(--accent-primary);
 }
 
-.feature-card h3 {
-    font-size: 1.4rem;
+.rom-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
     margin-bottom: 1rem;
-    font-weight: 600;
 }
 
-.feature-card p {
-    color: var(--text-secondary);
+.rom-meta span {
+    background: rgba(255,255,255,0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.rom-desc {
+    color: var(--text-primary);
     font-size: 0.95rem;
+    margin-bottom: 2rem;
+    white-space: pre-wrap;
+    flex-grow: 1;
+}
+
+.rom-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-download {
+    background: var(--gradient-brand);
+    color: white;
+}
+.btn-download:hover {
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-gallery {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--surface-border);
+}
+.btn-gallery:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* Gallery Section */
