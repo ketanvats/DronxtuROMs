@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 rom.images.forEach((imgSrc, i) => {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
-                    item.style.animationDelay = `${i * 0.1}s`;
+                    item.setAttribute('data-aos', 'zoom-in-up');
+                    item.setAttribute('data-aos-delay', ((i % 3) * 100).toString());
                     const img = document.createElement('img');
                     img.src = imgSrc;
                     img.alt = `${rom.title} Screenshot ${i + 1}`;
@@ -179,6 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Show Gallery Section
                 gallerySection.style.display = 'block';
+                
+                // Refresh AOS to register new elements
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 100);
                 
                 // Trigger a reflow to restart animation on the gallery
                 gallerySection.style.animation = 'none';

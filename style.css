@@ -466,32 +466,15 @@ nav {
 }
 
 .gallery-slider {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
     padding: 2rem 0;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.2) transparent;
-}
-
-.gallery-slider::-webkit-scrollbar {
-    height: 6px;
-}
-
-.gallery-slider::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.gallery-slider::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,0.2);
-    border-radius: 10px;
+    width: 100%;
 }
 
 .gallery-item {
-    flex: 0 0 auto;
-    width: 250px;
-    scroll-snap-align: center;
+    width: 100%;
     border-radius: 24px;
     overflow: hidden;
     cursor: pointer;
@@ -500,9 +483,6 @@ nav {
     position: relative;
     /* New blur start state */
     filter: grayscale(80%) blur(2px);
-    opacity: 0;
-    /* Fallback if JS doesn't add animation */
-    animation: slideInBlur 0.8s forwards;
 }
 
 .gallery-item::after {
