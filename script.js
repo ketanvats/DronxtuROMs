@@ -1,5 +1,27 @@
 const romData = [
     {
+        "id": 364189,
+        "title": "Reborn UI 3.0 A15",
+        "url": "https://t.me/mt6833unified_chat/364189",
+        "meta": ["HyperOS 3.0", "Android 15", "Hybrid Rom"],
+        "desc": "The newest iteration of Reborn UI featuring Android 15. Check out the screenshots!",
+        "images": [
+            "Reborn UI 3.0 A15 Screenshot/photo_6115943678032416919_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6115943678032416920_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6115943678032416921_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118182395375719168_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118182395375719170_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118189039690125882_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118189039690125884_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118189039690125885_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118189039690125887_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118189039690125888_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118687036853130996_w.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118696666169807433_y.jpg",
+            "Reborn UI 3.0 A15 Screenshot/photo_6118696666169807434_y.jpg"
+        ]
+    },
+    {
         "id": 1461,
         "title": "Reborn UI Extended",
         "url": "https://t.me/mt6833unified_updates/1461",
@@ -114,22 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryContainer = document.getElementById('gallery-container');
     const galleryTitle = document.getElementById('gallery-title');
 
-    // Render ROM Cards
-    romData.forEach((rom, index) => {
+    const latestContainer = document.getElementById('latest-container');
+
+    // Render ROM Cards function
+    function createRomCard(rom, index) {
         const card = document.createElement('div');
         card.className = 'rom-card';
-        // Give cards 3D tilt effect attributes
         card.setAttribute('data-tilt', '');
         card.setAttribute('data-tilt-max', '10');
         card.setAttribute('data-tilt-speed', '400');
         card.setAttribute('data-tilt-glare', 'true');
         card.setAttribute('data-tilt-max-glare', '0.2');
-
         card.setAttribute('data-aos', 'fade-up');
         card.setAttribute('data-aos-delay', (index * 100).toString());
 
         const metaTags = rom.meta.map(tag => `<span>${tag}</span>`).join('');
-
         card.innerHTML = `
             <div class="rom-header">
                 <h3 class="rom-title">${rom.title}</h3>
@@ -146,7 +167,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="btn-small btn-gallery" data-id="${rom.id}">View Screenshots</button>
             </div>
         `;
-        romContainer.appendChild(card);
+        return card;
+    }
+
+    // Render Latest Release
+    if (romData.length > 0) {
+        const latestRom = romData[0];
+        const latestCard = createRomCard(latestRom, 0);
+        latestCard.classList.add('latest-release-card');
+        latestContainer.appendChild(latestCard);
+    }
+
+    // Render Remaining ROM Cards
+    const otherRoms = romData.slice(1);
+    otherRoms.forEach((rom, index) => {
+        romContainer.appendChild(createRomCard(rom, index));
     });
 
     // Initialize VanillaTilt if loaded

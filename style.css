@@ -304,6 +304,27 @@ nav {
     margin: 0 auto;
 }
 
+.latest-release-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.latest-release-card {
+    max-width: 600px;
+    width: 100%;
+    transform: scale(1.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.05);
+}
+
+.latest-release-card .rom-title {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .rom-card {
     background: var(--surface-color);
     border: 1px solid var(--surface-border);
