@@ -221,12 +221,49 @@ nav {
     transform: translate(-50%, -50%);
 }
 
-.floating-img {
-    max-width: 320px;
-    border-radius: 30px;
-    border: 1px solid var(--surface-border);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--glass-border);
+.sponsor-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.floating-icon {
+    width: 200px;
+    height: 200px;
+    filter: invert(1) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
     animation: float 6s ease-in-out infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.sponsor-link:hover .floating-icon {
+    transform: scale(1.1);
+    filter: invert(1) drop-shadow(0 0 50px rgba(255, 255, 255, 0.8));
+    animation-play-state: paused;
+}
+
+.sponsor-tooltip {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.sponsor-link:hover .sponsor-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 @keyframes float {
