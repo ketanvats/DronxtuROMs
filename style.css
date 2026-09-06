@@ -502,6 +502,22 @@ nav {
     -webkit-backdrop-filter: blur(0px);
 }
 
+.img-float-wrapper {
+    width: 100%;
+    height: 100%;
+    animation: floatGallery 6s ease-in-out infinite;
+}
+
+@keyframes floatGallery {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.gallery-item:hover .img-float-wrapper {
+    animation-play-state: paused;
+}
+
 .gallery-item img {
     width: 100%;
     height: auto;

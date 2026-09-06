@@ -168,13 +168,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 rom.images.forEach((imgSrc, i) => {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
-                    item.setAttribute('data-aos', 'zoom-in-up');
-                    item.setAttribute('data-aos-delay', ((i % 3) * 100).toString());
+                    item.setAttribute('data-aos', 'fade-up');
+                    item.setAttribute('data-aos-duration', '1200');
+                    item.setAttribute('data-aos-easing', 'ease-out-cubic');
+                    item.setAttribute('data-aos-delay', ((i % 3) * 150).toString());
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'img-float-wrapper';
                     const img = document.createElement('img');
                     img.src = imgSrc;
                     img.alt = `${rom.title} Screenshot ${i + 1}`;
                     img.loading = 'lazy';
-                    item.appendChild(img);
+                    wrapper.appendChild(img);
+                    item.appendChild(wrapper);
                     galleryContainer.appendChild(item);
                 });
 
