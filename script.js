@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 rom.images.forEach((imgSrc, i) => {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
+                    item.style.animationDelay = `${i * 0.1}s`;
                     const img = document.createElement('img');
                     img.src = imgSrc;
                     img.alt = `${rom.title} Screenshot ${i + 1}`;
