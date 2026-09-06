@@ -193,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     centeredSlides: true,
                     slidesPerView: 'auto',
                     initialSlide: 1,
+                    loop: true,
                     coverflowEffect: {
                         rotate: 30,
                         stretch: 0,
@@ -207,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     keyboard: {
                         enabled: true
-                    }
+                    },
+                    mousewheel: true
                 });
                 
                 // Trigger a reflow to restart animation on the gallery
