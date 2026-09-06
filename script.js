@@ -3,11 +3,7 @@ const romData = [
         "id": 1461,
         "title": "Reborn UI Extended",
         "url": "https://t.me/mt6833unified_updates/1461",
-        "meta": [
-            "HyperOS",
-            "Android 14",
-            "Hybrid Rom"
-        ],
+        "meta": ["HyperOS", "Android 14", "Hybrid Rom"],
         "desc": "The ultimate HyperOS experience for POCO M4 Pro 5G. Extended edition by dronxtu.",
         "images": [
             "Reborn ui extended screenshot/photo_6242043333727424517_y.jpg",
@@ -29,13 +25,8 @@ const romData = [
         "id": 1472,
         "title": "Xiaomi HyperOS 3.1",
         "url": "https://t.me/mt6833unified_updates/1472",
-        "meta": [
-            "HyperOS 3.1",
-            "Android 16",
-            "Hybrid Rom"
-        ],
-        "desc": "Ported from Device: Redmi note 14 5g(beryl)
-Version: OS3.0.301.0.WOQINXM Indian Global Hybrid Rom",
+        "meta": ["HyperOS 3.1", "Android 16", "Hybrid Rom"],
+        "desc": "Ported from Device: Redmi note 14 5g(beryl)<br>Version: OS3.0.301.0.WOQINXM Indian Global Hybrid Rom",
         "images": [
             "Xiaomi HyperOS 3.1 Screenshot/photo_6271750089210533116_y.jpg",
             "Xiaomi HyperOS 3.1 Screenshot/photo_6271750089210533117_y.jpg",
@@ -50,15 +41,8 @@ Version: OS3.0.301.0.WOQINXM Indian Global Hybrid Rom",
         "id": 1445,
         "title": "MemeOS | Evergo",
         "url": "https://t.me/mt6833unified_updates/1445",
-        "meta": [
-            "MIUI 14",
-            "Android 13",
-            "MemeOS"
-        ],
-        "desc": "Release Date : 02/07/2026
-Base Rom : MIUI 14.0.8.0.TKTCNXM
-Rom Credit: @Rolex040623
-Maintainer: @dronxtu",
+        "meta": ["MIUI 14", "Android 13", "MemeOS"],
+        "desc": "Release Date : 02/07/2026<br>Base Rom : MIUI 14.0.8.0.TKTCNXM<br>Rom Credit: @Rolex040623<br>Maintainer: @dronxtu",
         "images": [
             "Meme os screenshot/photo_6291892356248615269_y.jpg",
             "Meme os screenshot/photo_6291892356248615270_y.jpg",
@@ -82,11 +66,7 @@ Maintainer: @dronxtu",
         "id": 1433,
         "title": "Reborn UI 2.0 A16",
         "url": "https://t.me/mt6833unified_updates/1433",
-        "meta": [
-            "HyperOS",
-            "Android 16",
-            "Hybrid Rom"
-        ],
+        "meta": ["HyperOS", "Android 16", "Hybrid Rom"],
         "desc": "Next generation Reborn UI on Android 16. Hybrid Rom for Evergo, Evergreen, Opal.",
         "images": [
             "Reborn ui extended screenshot/post_1433_0.jpg"
@@ -96,14 +76,8 @@ Maintainer: @dronxtu",
         "id": 1400,
         "title": "Reborn UI",
         "url": "https://t.me/mt6833unified_updates/1400",
-        "meta": [
-            "OS 3.0.7",
-            "Android 15",
-            "CN Base"
-        ],
-        "desc": "Released: 08/06/2026
-Base: OS3.0.7.0 VLNCNXM | A15 | CN ROM
-Flashing Type: Hybrid Rom",
+        "meta": ["OS 3.0.7", "Android 15", "CN Base"],
+        "desc": "Released: 08/06/2026<br>Base: OS3.0.7.0 VLNCNXM | A15 | CN ROM<br>Flashing Type: Hybrid Rom",
         "images": [
             "Reborn UI screenshot/photo_6120550515788680741_w.jpg",
             "Reborn UI screenshot/photo_6120550515788680742_w.jpg",
@@ -144,6 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
     romData.forEach((rom, index) => {
         const card = document.createElement('div');
         card.className = 'rom-card';
+        // Give cards 3D tilt effect attributes
+        card.setAttribute('data-tilt', '');
+        card.setAttribute('data-tilt-max', '10');
+        card.setAttribute('data-tilt-speed', '400');
+        card.setAttribute('data-tilt-glare', 'true');
+        card.setAttribute('data-tilt-max-glare', '0.2');
+
         card.setAttribute('data-aos', 'fade-up');
         card.setAttribute('data-aos-delay', (index * 100).toString());
 
@@ -158,12 +139,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="rom-desc">${rom.desc}</div>
             </div>
             <div class="rom-actions">
-                <a href="${rom.url}" target="_blank" class="btn-small btn-download">Download</a>
+                <a href="${rom.url}" target="_blank" class="btn-small btn-download">
+                    <span class="btn-glow"></span>
+                    Download
+                </a>
                 <button class="btn-small btn-gallery" data-id="${rom.id}">View Screenshots</button>
             </div>
         `;
         romContainer.appendChild(card);
     });
+
+    // Initialize VanillaTilt if loaded
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll(".rom-card"));
+    }
 
     // Handle Gallery Clicks
     document.querySelectorAll('.btn-gallery').forEach(btn => {
@@ -190,8 +179,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Show Gallery Section
                 gallerySection.style.display = 'block';
                 
+                // Trigger a reflow to restart animation on the gallery
+                gallerySection.style.animation = 'none';
+                gallerySection.offsetHeight; 
+                gallerySection.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                
                 // Scroll to Gallery
-                gallerySection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             }
         });
     });
@@ -206,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'block';
             setTimeout(() => {
                 modal.classList.add('show');
+                modalImg.style.transform = 'scale(1)';
             }, 10);
             modalImg.src = e.target.src;
             document.body.style.overflow = 'hidden';
@@ -214,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeModal = () => {
         modal.classList.remove('show');
+        modalImg.style.transform = 'scale(0.8)';
         setTimeout(() => {
             modal.style.display = 'none';
         }, 300);
