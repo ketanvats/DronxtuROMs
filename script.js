@@ -168,14 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 rom.images.forEach((imgSrc, i) => {
                     const item = document.createElement('div');
                     item.className = 'swiper-slide';
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'img-float-wrapper';
                     const img = document.createElement('img');
                     img.src = imgSrc;
                     img.alt = `${rom.title} Screenshot ${i + 1}`;
                     img.loading = 'lazy';
-                    wrapper.appendChild(img);
-                    item.appendChild(wrapper);
+                    item.appendChild(img);
                     galleryContainer.appendChild(item);
                 });
 
@@ -194,12 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     slidesPerView: 'auto',
                     initialSlide: 1,
                     loop: true,
+                    speed: 800, // Smooth out scroll transitions
                     coverflowEffect: {
-                        rotate: 30,
+                        rotate: 15, // Less rotation reduces layout thrashing
                         stretch: 0,
-                        depth: 200,
+                        depth: 250,
                         modifier: 1,
-                        slideShadows: true,
+                        slideShadows: false, // Disabling shadows massively improves framerate
                     },
                     pagination: {
                         el: '.swiper-pagination',
@@ -209,7 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     keyboard: {
                         enabled: true
                     },
-                    mousewheel: true
+                    mousewheel: {
+                        sensitivity: 1,
+                        releaseOnEdges: true, // Allows vertical scrolling when edge is reached
+                    }
                 });
                 
                 // Trigger a reflow to restart animation on the gallery

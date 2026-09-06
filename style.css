@@ -476,15 +476,16 @@ nav {
     border-radius: 24px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, filter 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
     border: 1px solid var(--surface-border);
     position: relative;
-    filter: grayscale(40%) blur(1px);
-    opacity: 0.7;
+    opacity: 0.3;
+    /* Force Hardware Acceleration for smooth 3D scroll */
+    transform: translateZ(0);
+    will-change: transform, opacity;
 }
 
 .swiper-slide-active {
-    filter: grayscale(0%) blur(0px);
     opacity: 1;
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
@@ -497,39 +498,6 @@ nav {
     background: #ffffff !important;
 }
 
-.swiper-slide::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    transition: 0.4s ease;
-    pointer-events: none;
-}
-
-.swiper-slide:hover::after, .swiper-slide-active::after {
-    background: rgba(0,0,0,0);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-}
-
-.img-float-wrapper {
-    width: 100%;
-    height: 100%;
-    animation: floatGallery 6s ease-in-out infinite;
-}
-
-@keyframes floatGallery {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-.swiper-slide:hover .img-float-wrapper, .swiper-slide-active .img-float-wrapper {
-    animation-play-state: paused;
-}
-
 .swiper-slide img {
     width: 100%;
     height: auto;
@@ -538,14 +506,15 @@ nav {
 }
 
 .swiper-slide:hover {
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
-    filter: grayscale(0%) blur(0px);
+    opacity: 0.8;
+}
+
+.swiper-slide-active:hover {
+    opacity: 1;
 }
 
 .swiper-slide:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* Modal */
