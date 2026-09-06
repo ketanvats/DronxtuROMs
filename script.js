@@ -171,22 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Render Latest Release
-    if (romData.length > 0) {
+    if (romData.length > 0 && latestContainer) {
         const latestRom = romData[0];
         const latestCard = createRomCard(latestRom, 0);
         latestCard.classList.add('latest-release-card');
         latestContainer.appendChild(latestCard);
     }
 
-    // Render Remaining ROM Cards
-    const otherRoms = romData.slice(1);
-    otherRoms.forEach((rom, index) => {
-        romContainer.appendChild(createRomCard(rom, index));
-    });
+    // Render All ROM Cards in the Collection
+    if (romContainer) {
+        romData.forEach((rom, index) => {
+            romContainer.appendChild(createRomCard(rom, index));
+        });
+    }
 
     // Initialize VanillaTilt if loaded
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll(".rom-card"));
+    }
+
+    // Refresh AOS so dynamically generated cards animate and are visible
+    if (typeof AOS !== 'undefined' && AOS.refresh) {
+        AOS.refresh();
     }
 
     // Handle Gallery Clicks
