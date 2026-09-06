@@ -4,13 +4,6 @@ A modern, glassmorphism-styled portfolio showcasing custom ROMs tailored for the
 
 🌍 **Live Website:** [https://ketanvats.github.io/DronxtuROMs/](https://ketanvats.github.io/DronxtuROMs/) (Auto-deployed via GitHub Pages)
 
-## ✨ Features
-- **Sleek Monochrome Theme**: Deep blacks and crisp whites combined with frosted glass overlays.
-- **3D Coverflow Gallery**: Interactive, hardware-accelerated screenshot galleries that slide like a deck of cards using Swiper.js.
-- **Dynamic Content Generation**: ROM cards and galleries are rendered dynamically from structured JSON data.
-- **Scroll Animations**: Smooth entrance animations powered by AOS (Animate On Scroll) and custom floating keyframes.
-- **Automated Deployment**: Includes a fully configured GitHub Actions workflow (`pages.yml`) for instant deployment upon pushing.
-
 ## 📱 Featured ROMs
 - **Reborn UI Extended** (HyperOS / Android 14)
 - **Xiaomi HyperOS 3.1** (Android 16)
